@@ -1,6 +1,9 @@
 package main
 
-import "github.com/ZhanserikKalmukhambet/Go_Final_Project/initializers"
+import (
+	"fmt"
+	"github.com/ZhanserikKalmukhambet/Go_Final_Project/initializers"
+)
 
 func init() {
 	initializers.LoadEnvVariables()
@@ -8,5 +11,5 @@ func init() {
 }
 
 func main() {
-
+	fmt.Println("Hello ")
 }
