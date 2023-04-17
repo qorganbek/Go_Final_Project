@@ -12,4 +12,8 @@ func init() {
 
 func main() {
 	fmt.Println("Hello ")
+
+	fmt.Println("Change number 2")
+	fmt.Println("Change number 3")
+	fmt.Println("Change number 4")
 }
