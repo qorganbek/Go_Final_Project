@@ -7,7 +7,7 @@ import (
 type Car struct {
 	gorm.Model
 	Mark           string          `json:"mark"`
-	Modell         string          `json:"modell"`
+	Modell         string          `json:"modell" gorm:"unique_index"`
 	CategoryID     uint            `json:"categoryID"`
-	Advertisements []Advertisement `json:"advertisements" gorm:"foreignKey:CarID"`
+	Advertisements []Advertisement `json:"advertisements" gorm:"foreignKey:CarID; constraint:OnDelete:CASCADE"`
 }
