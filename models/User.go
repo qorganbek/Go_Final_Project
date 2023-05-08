@@ -18,6 +18,7 @@ type User struct {
 	Favorite       Favorite        `json:"favorite"`
 	Chats          []Chat          `json:"chats" gorm:"foreignKey:UserID"`
 	Advertisements []Advertisement `json:"advertisements" gorm:"foreignKey:UserID"`
+	Complaints     []Complaint     `json:"complaints" gorm:"foreignKey: UserID"`
 }
 
 type CreateUserInput struct {

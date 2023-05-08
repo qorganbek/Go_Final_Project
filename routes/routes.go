@@ -37,7 +37,7 @@ func UserRoutes(routes *gin.Engine) {
 	routes.PATCH("/users/:id", controllers.UpdateUserByID)
 	routes.DELETE("/users/:id", controllers.DeleteUserByID)
 
-	routes.GET("/users/loggedUserDetail", controllers.GetUserDetailsFromToken)
+	//routes.GET("/users/loggedUserDetail", controllers.GetUserDetailsFromToken)
 }
 
 func ChatRoutes(routes *gin.Engine) {

@@ -27,6 +27,9 @@ func CreateChat(c *gin.Context) {
 		return
 	}
 
+	loggedUser := GetUserDetailsFromToken(c)
+	chat.UserID = int(loggedUser["userID"].(float64))
+
 	if err := initializers.DB.Create(&chat).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return

@@ -81,8 +81,9 @@ func SignIn(c *gin.Context) {
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"userID": user.ID,
-		"exp":    time.Now().Add(time.Hour * 24 * 30).Unix(),
+		"userID":   user.ID,
+		"userRole": user.Role,
+		"exp":      time.Now().Add(time.Hour * 24 * 30).Unix(),
 	})
 
 	tokenString, err := token.SignedString([]byte(os.Getenv("SECRET")))
@@ -117,33 +118,37 @@ func Validate(c *gin.Context) {
 	})
 }
 
-func GetUserDetailsFromToken(c *gin.Context) {
+func GetUserDetailsFromToken(c *gin.Context) gin.H {
 	// retrieve the token from the cookie
 	tokenCookie, err := c.Request.Cookie("Authorization")
 	if err != nil {
-		// handle error
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "auth token not found"})
-		return
+		//c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "auth token not found"})
+		return nil
 	}
 	tokenString := tokenCookie.Value
 
 	// verify the token
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-		// add validation for signature and issuer
-		// you can use a constant secret key or use a dynamic one loaded from the environment variable
 		return []byte(os.Getenv("SECRET")), nil
 	})
+
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "invalid auth token"})
-		return
+		//c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "invalid auth token"})
+		return nil
 	}
 
-	// decode the token and access the user details
+	//decode the token and access the user details
 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-		// do something with the user details
-		c.JSON(http.StatusOK, gin.H{"claims": claims})
+		//c.JSON(http.StatusOK, gin.H{"userID": claims["userID"], "userRole": claims["userRole"]})
+
+		response := gin.H{
+			"userID":   claims["userID"],
+			"userRole": claims["userRole"],
+		}
+
+		return response
 	} else {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "invalid auth token"})
-		return
+		//c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "invalid auth token"})
+		return nil
 	}
 }
