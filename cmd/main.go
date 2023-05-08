@@ -13,10 +13,18 @@ func init() {
 }
 
 func main() {
+	gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
 
-	routes.AdminCarRoutes(router)
-	routes.AdminCategoryRoutes(router)
+	routes.CarRoutes(router)
+	routes.CategoryRoutes(router)
+	routes.AuthRoutes(router)
+	routes.UserRoutes(router)
+	routes.ChatRoutes(router)
+	routes.AdvertisementRoutes(router)
+	routes.AdvertisementImageRoutes(router)
+	routes.MessageRoutes(router)
+	routes.AddressRoutes(router)
 
-	log.Fatal(router.Run(":8080"))
+	log.Fatal(router.Run(":8000"))
 }

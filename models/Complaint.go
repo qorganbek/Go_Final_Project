@@ -7,7 +7,7 @@ import (
 
 type Complaint struct {
 	gorm.Model
-	AdvertisementID uint                  `json:"advertisementID"`
+	AdvertisementID int                   `json:"advertisementID"`
 	ComplaintReason enums.ComplaintReason `json:"complaintReason"`
 	Text            string                `json:"text"`
 }
