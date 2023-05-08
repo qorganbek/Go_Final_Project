@@ -15,5 +15,5 @@ type Message struct {
 	gorm.Model
 	ChatID int    `json:"chatID"`
 	Text   string `json:"text"`
-	Read   bool   `json:"read"`
+	Read   bool   `json:"read" gorm:"default:false"`
 }
