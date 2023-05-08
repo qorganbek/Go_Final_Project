@@ -13,6 +13,7 @@ func ConnectDatabase() {
 	DB, err = gorm.Open(postgres.Open(os.Getenv("DB_URL")), &gorm.Config{})
 
 	if err != nil {
+		println(err)
 		panic("Could not connect to DATABASE")
 	}
 }

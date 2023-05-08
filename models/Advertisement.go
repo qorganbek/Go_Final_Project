@@ -18,6 +18,7 @@ type Advertisement struct {
 	Raiting        int     `json:"raiting"`
 	Address        Address `json:"address"`
 
+	Chats       []ChatV1             `json:"chats" gorm:"AdvertisementID"`
 	Images      []AdvertisementImage `json:"images" gorm:"AdvertisementID"`
 	Complaintes []Complaint          `json:"complaintes" gorm:"foreignKey:AdvertisementID"`
 }

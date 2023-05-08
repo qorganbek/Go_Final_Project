@@ -17,4 +17,6 @@ type User struct {
 
 	Favorite       Favorite        `json:"favorite"`
 	Advertisements []Advertisement `json:"advertisements" gorm:"foreignKey:UserID"`
+
+	Messages []Message `json:"messages" gorm:"foreignKey:UserID"`
 }
