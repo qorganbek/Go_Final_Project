@@ -8,8 +8,8 @@ import (
 type User struct {
 	gorm.Model
 	Firstname   string `json:"firstname"`
-	Secondname  string `json:"secondname"`
-	PhoneNumber string `json:"phoneNumber"`
+	Lastname    string `json:"lastname"`
+	PhoneNumber string `json:"phoneNumber" gorm:"unique_index"`
 	Password    string `json:"password"`
 
 	Role   enums.Role   `json:"role"`
@@ -18,5 +18,6 @@ type User struct {
 	Favorite       Favorite        `json:"favorite"`
 	Advertisements []Advertisement `json:"advertisements" gorm:"foreignKey:UserID"`
 
-	Messages []Message `json:"messages" gorm:"foreignKey:UserID"`
+	Messages       []Message       `json:"messages" gorm:"foreignKey:UserID"`
+	Advertisements []Advertisement `json:"advertisements" gorm:"foreignKey:UserID; constraint:OnDelete:CASCADE"`
 }

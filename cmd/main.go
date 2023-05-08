@@ -1,8 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/initializers"
+	"github.com/ZhanserikKalmukhambet/Go_Final_Project/routes"
+	"github.com/gin-gonic/gin"
+	"log"
 )
 
 func init() {
@@ -11,9 +13,10 @@ func init() {
 }
 
 func main() {
-	fmt.Println("Hello")
+	router := gin.New()
 
-	fmt.Println("Change number 2")
-	fmt.Println("Change number 3")
-	fmt.Println("Change number 4")
+	routes.AdminCarRoutes(router)
+	routes.AdminCategoryRoutes(router)
+
+	log.Fatal(router.Run(":8080"))
 }

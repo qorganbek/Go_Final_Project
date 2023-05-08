@@ -13,12 +13,23 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d58e66fb-ec78-439d-b894-0af8f933be2d/storage_v2/_src_/database/argymak.lAWp0w/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d58e66fb-ec78-439d-b894-0af8f933be2d/storage_v2/_src_/database/argymak.lAWp0w/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d58e66fb-ec78-439d-b894-0af8f933be2d/storage_v2/_src_/database/argymak.lAWp0w/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d58e66fb-ec78-439d-b894-0af8f933be2d/storage_v2/_src_/database/argymak.lAWp0w/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/initializers/connect_to_db.go" beforeDir="false" afterPath="$PROJECT_DIR$/initializers/connect_to_db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrate/migrate.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrate/migrate.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Advertisement.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/Advertisement.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Chat.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/Chat.go" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrate/migrate.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrate/migrate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Advertisement.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/Advertisement.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Car.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/Car.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Category.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/Category.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Favorite.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/Favorite.go" afterDir="false" />
+>>>>>>> 0e1ee2b5ab67d5fa2b11b3b6bc083d65daf6d64f
       <change beforePath="$PROJECT_DIR$/models/User.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +71,11 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+<<<<<<< HEAD
     &quot;last_opened_file_path&quot;: &quot;C:/Study/Projects/Go_Final_Project&quot;,
+=======
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/GolandProjects/final_project&quot;,
+>>>>>>> 0e1ee2b5ab67d5fa2b11b3b6bc083d65daf6d64f
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;
   },
