@@ -31,6 +31,6 @@ type CreateUserInput struct {
 }
 
 type LoginUserInput struct {
-	PhoneNumber string `json:"phoneNumber" gorm:"unique"  `
+	PhoneNumber string `json:"phoneNumber" gorm:"unique"`
 	Password    string `json:"password"`
 }

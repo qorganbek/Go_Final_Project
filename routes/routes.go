@@ -2,6 +2,7 @@ package routes
 
 import (
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/controllers"
+	"github.com/ZhanserikKalmukhambet/Go_Final_Project/filters"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/middleware"
 	"github.com/gin-gonic/gin"
 )
@@ -35,6 +36,8 @@ func UserRoutes(routes *gin.Engine) {
 	routes.POST("/users", controllers.CreateUser)
 	routes.PATCH("/users/:id", controllers.UpdateUserByID)
 	routes.DELETE("/users/:id", controllers.DeleteUserByID)
+
+	routes.GET("/users/loggedUserDetail", controllers.GetUserDetailsFromToken)
 }
 
 func ChatRoutes(routes *gin.Engine) {
@@ -55,15 +58,18 @@ func MessageRoutes(routes *gin.Engine) {
 
 func AdvertisementRoutes(routes *gin.Engine) {
 	routes.GET("/advertisements", controllers.ListOfAdvertisements)
-	routes.GET("/advertisement/:id", controllers.GetAdvertisementByID)
+	routes.GET("/advertisements/:id", controllers.GetAdvertisementByID)
 	routes.POST("/advertisements", controllers.CreateAdvertisement)
 	routes.PATCH("/advertisements/:id", controllers.UpdateAdvertisementByID)
 	routes.DELETE("/advertisements/:id", controllers.DeleteAdvertisementByID)
+
+	routes.GET("advertisements/filterByPrice/:min/:max", filters.ListOfAdvertisementsByPrice)
+	routes.GET("advertisements/filterByYear/:min/:max", filters.ListOfAdvertisementsByYears)
 }
 
 func AdvertisementImageRoutes(routes *gin.Engine) {
 	routes.GET("/advertisement_images", controllers.ListOfAdvertisementImages)
-	routes.GET("/advertisement_image/:id", controllers.GetAdvertisementImageByID)
+	routes.GET("/advertisement_images/:id", controllers.GetAdvertisementImageByID)
 	routes.POST("/advertisement_images", controllers.CreateAdvertisementImage)
 	routes.PATCH("/advertisement_images/:id", controllers.UpdateAdvertisementImageByID)
 	routes.DELETE("/advertisement_images/:id", controllers.DeleteAdvertisementImageByID)
@@ -71,4 +77,11 @@ func AdvertisementImageRoutes(routes *gin.Engine) {
 
 func AddressRoutes(routes *gin.Engine) {
 	routes.POST("/addresses", controllers.CreateAddress)
+}
+
+func ComplaintRoutes(routes *gin.Engine) {
+	routes.GET("/complaints", controllers.ListOfComplaints)
+	routes.GET("/complaints/:id", controllers.GetComplaintByID)
+	routes.POST("/complaints", controllers.CreateComplaint)
+	routes.DELETE("/complaints/:id", controllers.DeleteComplaintByID)
 }
