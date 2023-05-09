@@ -25,6 +25,7 @@ func main() {
 	routes.AdvertisementImageRoutes(router)
 	routes.MessageRoutes(router)
 	routes.AddressRoutes(router)
+	routes.ComplaintRoutes(router)
 
 	log.Fatal(router.Run(":8000"))
 }

@@ -8,7 +8,7 @@ type Advertisement struct {
 	CarID  int `json:"carID"`
 	//Title string `json:"title" gorm:"default:""`
 	Year           int     `json:"year"`
-	EngineCapacity float64 `json:"engineCapacity" gorm:"column:engineCapacity; check:engineCapacity > 0"`
+	EngineCapacity float64 `json:"engineCapacity" gorm:"check:engine_capacity > 0"`
 	Millage        int     `json:"millage" gorm:"check:millage > 0"`
 	Description    string  `json:"description" gorm:"default:'No Description'"`
 	Transmisson    string  `json:"transmisson"`

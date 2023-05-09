@@ -13,10 +13,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d58e66fb-ec78-439d-b894-0af8f933be2d/storage_v2/_src_/database/argymak.lAWp0w/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d58e66fb-ec78-439d-b894-0af8f933be2d/storage_v2/_src_/database/argymak.lAWp0w/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d58e66fb-ec78-439d-b894-0af8f933be2d/storage_v2/_src_/database/argymak.lAWp0w/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d58e66fb-ec78-439d-b894-0af8f933be2d/storage_v2/_src_/database/argymak.lAWp0w/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initializers/connect_to_db.go" beforeDir="false" afterPath="$PROJECT_DIR$/initializers/connect_to_db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrate/migrate.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrate/migrate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Advertisement.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/Advertisement.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/chat.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/chat.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/complaints.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/complaints.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Complaint.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/Complaint.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/User.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routes.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
