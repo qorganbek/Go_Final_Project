@@ -83,3 +83,8 @@ func ComplaintRoutes(routes *gin.Engine) {
 	routes.GET("/complaints/:id", controllers.GetComplaintByID)
 	routes.POST("/complaints", controllers.CreateComplaint)
 }
+
+func FavoriteRoutes(routes *gin.Engine) {
+	//routes.GET("/favorite/:id", controllers.ShowFavorites)
+	//routes.PATCH("/favorite/:id", controllers.AddToFavorite)
+}

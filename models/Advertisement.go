@@ -6,11 +6,11 @@ type Advertisement struct {
 	gorm.Model
 	UserID int `json:"userID"`
 	CarID  int `json:"carID"`
-
+	//Title string `json:"title" gorm:"default:""`
 	Year           int     `json:"year"`
 	EngineCapacity float64 `json:"engineCapacity" gorm:"check:engine_capacity > 0"`
 	Millage        int     `json:"millage" gorm:"check:millage > 0"`
-	Description    string  `json:"description" gorm:"default:No Description"`
+	Description    string  `json:"description" gorm:"default:'No Description'"`
 	Transmisson    string  `json:"transmisson"`
 	Color          string  `json:"color"`
 	Price          float64 `json:"price" gorm:"check:price > 0"`

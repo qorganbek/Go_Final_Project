@@ -40,13 +40,8 @@ func CreateComplaint(c *gin.Context) {
 		return
 	}
 
-	if utils.IsAuthorizedOrReadOnly(c) == false {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "You should be logged to write complaint!!!"})
-		return
-	}
-
-	loggedUserID := int(middleware.GetUserDetailsFromToken(c)["userID"].(float64))
-	complaint.UserID = loggedUserID
+	loggedUser := middleware.GetUserDetailsFromToken(c)
+	complaint.UserID = int(loggedUser["userID"].(float64))
 
 	if err := initializers.DB.Create(&complaint).Error; err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})

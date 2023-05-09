@@ -5,30 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ea197ca-b407-44d3-96ec-29be6e150e68" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../assignment_1/.idea/assignment_1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_1/.idea/assignment_1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_1/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_1/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_1/data/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_1/data/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_1/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_1/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_1/sign-in.html" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_1/sign-in.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_1/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_1/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/base/1/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/base/1/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/16389" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/16389" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/16390" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/16390" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/16396" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/16396" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/16398" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/16398" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/base/16384/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/base/5/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/base/5/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/global/pg_control" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/global/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/pg_stat/pgstat.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/pg_stat/pgstat.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/pg_wal/000000010000000000000001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assignment_3/db-data/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/../assignment_3/db-data/pg_xact/0000" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/controllers/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/auth.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/chat.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/chat.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/complaints.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/complaints.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.go" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/controllers/advertisement.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/advertisement.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/cars.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/cars.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/categories.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/categories.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/chat.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/chat.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/complaints.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/complaints.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/favorite.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/favorite.go" afterDir="false" />
+>>>>>>> da05fc620190e0d308dfc94c51a464b3e71a9288
       <change beforePath="$PROJECT_DIR$/routes/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/routes.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +34,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../Program Files/Go" />
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../Program Files/Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -70,7 +61,11 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+<<<<<<< HEAD
     &quot;last_opened_file_path&quot;: &quot;C:/Users/User/GolandProjects/final_project/controllers&quot;,
+=======
+    &quot;last_opened_file_path&quot;: &quot;C:/Study/Projects/final_project&quot;,
+>>>>>>> da05fc620190e0d308dfc94c51a464b3e71a9288
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;
   },
@@ -85,34 +80,38 @@
       <recent name="C:\Users\User\GolandProjects\final_project\controllers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+<<<<<<< HEAD
       <recent name="C:\Users\User\GolandProjects\final_project\middleware" />
+=======
+      <recent name="C:\Study\Projects\final_project\middleware" />
+      <recent name="C:\Study\Projects\final_project" />
+      <recent name="C:\Study\Projects\final_project\utils" />
+>>>>>>> da05fc620190e0d308dfc94c51a464b3e71a9288
       <recent name="C:\Users\User\GolandProjects\final_project\cmd" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <configuration name="go build github.com/ZhanserikKalmukhambet/Go_Final_Project/migrate" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="final_project" />
       <working_directory value="$PROJECT_DIR$" />
-      <go_parameters value="-i" />
-      <kind value="FILE" />
+      <kind value="PACKAGE" />
+      <package value="github.com/ZhanserikKalmukhambet/Go_Final_Project/migrate" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/migrate/migrate.go" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="final_project" />
-      <working_directory value="$PROJECT_DIR$" />
-      <go_parameters value="-i" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <method v="2" />
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/ZhanserikKalmukhambet/Go_Final_Project/migrate" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

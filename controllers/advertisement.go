@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	final_project "github.com/ZhanserikKalmukhambet/Go_Final_Project"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/initializers"
+	"github.com/ZhanserikKalmukhambet/Go_Final_Project/middleware"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -27,11 +29,21 @@ func CreateAdvertisement(c *gin.Context) {
 		return
 	}
 
+	isAuth := final_project.IsAuthorizedOrReadOnly(c)
+
+	if !isAuth {
+		c.JSON(http.StatusForbidden, gin.H{"error": "this user is not uthrozied"})
+		return
+	}
+
+	userID := int(middleware.GetUserDetailsFromToken(c)["userID"].(float64))
+
+	advertisement.UserID = userID
+
 	if err := initializers.DB.Create(&advertisement).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-
 	c.JSON(http.StatusOK, gin.H{"data": advertisement})
 }
 
@@ -57,6 +69,21 @@ func UpdateAdvertisementByID(c *gin.Context) {
 		return
 	}
 
+	isAuth := final_project.IsAuthorizedOrReadOnly(c)
+
+	if !isAuth {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "User unauthorized"})
+		return
+	}
+
+	ownerID := int(middleware.GetUserDetailsFromToken(c)["userID"].(float64))
+	isAdmin := final_project.IsAdmin(c)
+
+	if ownerID != advertisement.UserID && !isAdmin {
+		c.JSON(http.StatusForbidden, gin.H{"error": "this user is not owner or admin"})
+		return
+	}
+
 	initializers.DB.Save(&advertisement)
 	c.JSON(http.StatusOK, gin.H{"data": advertisement})
 }
@@ -67,6 +94,22 @@ func DeleteAdvertisementByID(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
+
+	isAuth := final_project.IsAuthorizedOrReadOnly(c)
+
+	if !isAuth {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "User unauthorized"})
+		return
+	}
+
+	ownerID := int(middleware.GetUserDetailsFromToken(c)["userID"].(float64))
+	isAdmin := final_project.IsAdmin(c)
+
+	if ownerID != advertisement.UserID && !isAdmin {
+		c.JSON(http.StatusForbidden, gin.H{"error": "this user is not owner or admin"})
+		return
+	}
+
 	initializers.DB.Delete(&advertisement)
 	c.JSON(http.StatusOK, gin.H{"data": "Record deleted!"})
 }
