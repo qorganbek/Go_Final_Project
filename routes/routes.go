@@ -24,10 +24,10 @@ func CarRoutes(routes *gin.Engine) {
 }
 
 func AuthRoutes(routes *gin.Engine) {
-	routes.POST("users/signup", controllers.SignUp)
-	routes.POST("users/login", controllers.SignIn)
-	routes.GET("users/validate", middleware.RequireAuth, controllers.Validate)
-	routes.POST("users/logout", controllers.Logout)
+	routes.POST("users/signup", middleware.SignUp)
+	routes.POST("users/login", middleware.SignIn)
+	routes.GET("users/validate", middleware.RequireAuth, middleware.Validate)
+	routes.POST("users/logout", middleware.Logout)
 }
 
 func UserRoutes(routes *gin.Engine) {
@@ -84,4 +84,9 @@ func ComplaintRoutes(routes *gin.Engine) {
 	routes.GET("/complaints/:id", controllers.GetComplaintByID)
 	routes.POST("/complaints", controllers.CreateComplaint)
 	routes.DELETE("/complaints/:id", controllers.DeleteComplaintByID)
+}
+
+func FavoriteRoutes(routes *gin.Engine) {
+	//routes.GET("/favorite/:id", controllers.ShowFavorites)
+	//routes.PATCH("/favorite/:id", controllers.AddToFavorite)
 }

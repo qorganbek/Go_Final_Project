@@ -1,4 +1,4 @@
-package controllers
+package middleware
 
 import (
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/initializers"

@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/initializers"
+	"github.com/ZhanserikKalmukhambet/Go_Final_Project/middleware"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -27,7 +28,7 @@ func CreateComplaint(c *gin.Context) {
 		return
 	}
 
-	loggedUser := GetUserDetailsFromToken(c)
+	loggedUser := middleware.GetUserDetailsFromToken(c)
 	complaint.UserID = int(loggedUser["userID"].(float64))
 
 	if err := initializers.DB.Create(&complaint).Error; err != nil {

@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"github.com/ZhanserikKalmukhambet/Go_Final_Project"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/initializers"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/models"
 	"github.com/gin-gonic/gin"
@@ -24,6 +25,20 @@ func CreateCar(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&car); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	isAuth := final_project.IsAuthorizedOrReadOnly(c)
+
+	if !isAuth {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "User Unauthorized"})
+		return
+	}
+
+	isAdmin := final_project.IsAdmin(c)
+
+	if !isAdmin {
+		c.JSON(http.StatusForbidden, gin.H{"error": "user not admin"})
 		return
 	}
 
@@ -57,6 +72,20 @@ func UpdateCarByID(c *gin.Context) {
 		return
 	}
 
+	isAuth := final_project.IsAuthorizedOrReadOnly(c)
+
+	if !isAuth {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "User Unauthorized"})
+		return
+	}
+
+	isAdmin := final_project.IsAdmin(c)
+
+	if !isAdmin {
+		c.JSON(http.StatusForbidden, gin.H{"error": "user not admin"})
+		return
+	}
+
 	initializers.DB.Save(&car)
 	c.JSON(http.StatusOK, gin.H{"data": car})
 }
@@ -67,6 +96,22 @@ func DeleteCarByID(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
+
+	isAuth := final_project.IsAuthorizedOrReadOnly(c)
+
+	if !isAuth {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "User Unauthorized"})
+		return
+	}
+
+	isAdmin := final_project.IsAdmin(c)
+
+	if !isAdmin {
+		c.JSON(http.StatusForbidden, gin.H{"error": "user not admin"})
+
+		return
+	}
+
 	initializers.DB.Delete(&car)
 	c.JSON(http.StatusOK, gin.H{"data": "Record deleted!"})
 }
