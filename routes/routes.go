@@ -45,6 +45,7 @@ func ChatRoutes(routes *gin.Engine) {
 	routes.POST("/chats", controllers.CreateChat)
 	routes.PATCH("/chats/:id", controllers.UpdateChatByID)
 	routes.DELETE("/chats/:id", controllers.DeleteChatByID)
+	routes.GET("/chats/:id/messages", controllers.ChatMessages)
 }
 
 func MessageRoutes(routes *gin.Engine) {
@@ -66,25 +67,14 @@ func AdvertisementRoutes(routes *gin.Engine) {
 	routes.GET("advertisements/filterByYear/:min/:max", filters.ListOfAdvertisementsByYears)
 }
 
-func AdvertisementImageRoutes(routes *gin.Engine) {
-	routes.GET("/advertisement_images", controllers.ListOfAdvertisementImages)
-	routes.GET("/advertisement_images/:id", controllers.GetAdvertisementImageByID)
-	routes.POST("/advertisement_images", controllers.CreateAdvertisementImage)
-	routes.PATCH("/advertisement_images/:id", controllers.UpdateAdvertisementImageByID)
-	routes.DELETE("/advertisement_images/:id", controllers.DeleteAdvertisementImageByID)
-}
-
-func AddressRoutes(routes *gin.Engine) {
-	routes.POST("/addresses", controllers.CreateAddress)
-}
-
 func ComplaintRoutes(routes *gin.Engine) {
 	routes.GET("/complaints", controllers.ListOfComplaints)
 	routes.GET("/complaints/:id", controllers.GetComplaintByID)
 	routes.POST("/complaints", controllers.CreateComplaint)
 }
 
-func FavoriteRoutes(routes *gin.Engine) {
-	//routes.GET("/favorite/:id", controllers.ShowFavorites)
-	//routes.PATCH("/favorite/:id", controllers.AddToFavorite)
+func FavoriteItemRoutes(routes *gin.Engine) {
+	routes.GET("/favorites", controllers.ListOfUserFavoriteItems)
+	routes.POST("/favorites", controllers.CreateFavoriteItem)
+	routes.DELETE("/favorites/:id", controllers.DeleteFavoriteItemByID)
 }

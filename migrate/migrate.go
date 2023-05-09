@@ -17,14 +17,8 @@ func main() {
 	initializers.DB.AutoMigrate(&models.Chat{})
 	initializers.DB.AutoMigrate(&models.User{})
 	initializers.DB.AutoMigrate(&models.Message{})
-	initializers.DB.AutoMigrate(&models.Favorite{})
+	initializers.DB.AutoMigrate(&models.FavoriteItem{})
 	initializers.DB.AutoMigrate(&models.Category{})
 	initializers.DB.AutoMigrate(&models.Complaint{})
 	initializers.DB.AutoMigrate(&models.Address{})
-
-	//if initializers.DB.Migrator().HasTable(&models.Advertisement{}) {
-	//	fmt.Print("Error")
-	//} else {
-	//	fmt.Print("Successfully connected!")
-	//}
 }

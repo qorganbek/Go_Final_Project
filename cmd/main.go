@@ -22,10 +22,9 @@ func main() {
 	routes.UserRoutes(router)
 	routes.ChatRoutes(router)
 	routes.AdvertisementRoutes(router)
-	routes.AdvertisementImageRoutes(router)
 	routes.MessageRoutes(router)
-	routes.AddressRoutes(router)
 	routes.ComplaintRoutes(router)
+	routes.FavoriteItemRoutes(router)
 
 	log.Fatal(router.Run(":8000"))
 }

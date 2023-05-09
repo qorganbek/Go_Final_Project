@@ -49,11 +49,6 @@ func SignUp(c *gin.Context) {
 		return
 	}
 
-	var favorite models.Favorite
-	favorite.UserID = int(user.ID)
-
-	initializers.DB.Create(&favorite)
-
 	// Respond
 	c.JSON(http.StatusOK, gin.H{"data": "User created!"})
 }

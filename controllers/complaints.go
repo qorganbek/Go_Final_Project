@@ -1,16 +1,16 @@
 package controllers
 
 import (
+	final_project "github.com/ZhanserikKalmukhambet/Go_Final_Project"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/initializers"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/middleware"
 	"github.com/ZhanserikKalmukhambet/Go_Final_Project/models"
-	"github.com/ZhanserikKalmukhambet/Go_Final_Project/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 func ListOfComplaints(c *gin.Context) {
-	if utils.IsAdmin(c) == false {
+	if final_project.IsAdmin(c) == false {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "You can not see complaints! You are not admin!"})
 		return
 	}
@@ -28,7 +28,7 @@ func ListOfComplaints(c *gin.Context) {
 }
 
 func CreateComplaint(c *gin.Context) {
-	if utils.IsAuthorizedOrReadOnly(c) == false {
+	if final_project.IsAuthorizedOrReadOnly(c) == false {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Please, log in to write complaint on advertisement!"})
 		return
 	}
@@ -52,7 +52,7 @@ func CreateComplaint(c *gin.Context) {
 }
 
 func GetComplaintByID(c *gin.Context) {
-	if utils.IsAdmin(c) == false {
+	if final_project.IsAdmin(c) == false {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "You can not see specific complaint! You are not admin!"})
 		return
 	}

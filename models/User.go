@@ -15,7 +15,7 @@ type User struct {
 	Role   enums.Role   `json:"role"`
 	Gender enums.Gender `json:"gender"`
 
-	Favorite       Favorite        `json:"favorite"`
+	FavoriteItems  []FavoriteItem  `json:"favoriteItems" gorm:"foreignKey:UserID"`
 	Chats          []Chat          `json:"chats" gorm:"foreignKey:UserID"`
 	Advertisements []Advertisement `json:"advertisements" gorm:"foreignKey:UserID"`
 	Complaints     []Complaint     `json:"complaints" gorm:"foreignKey: UserID"`
