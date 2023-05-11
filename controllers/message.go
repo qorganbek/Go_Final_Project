@@ -68,17 +68,16 @@ func UpdateMessageByID(c *gin.Context) {
 	}
 
 	var chat models.Chat
-	err := initializers.DB.Where("id = ?", message.ChatID).Find(&chat)
+	err := initializers.DB.Where("id = ?", message.ChatID).Find(&chat).Error
 	if err != nil {
-		panic(err)
+		c.JSON(404, gin.H{"error": err})
 		return
 	}
 
 	ownerID := int(middleware.GetPayloadFromToken(c)["userID"].(float64))
-	isAdmin := final_project.IsAdmin(c)
 
-	if !isAdmin && ownerID != chat.UserID {
-		c.JSON(http.StatusForbidden, gin.H{"error": "User is not admin or owner"})
+	if ownerID != chat.UserID {
+		c.JSON(http.StatusForbidden, gin.H{"error": "User is not owner."})
 		return
 	}
 
