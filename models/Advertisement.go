@@ -21,6 +21,8 @@ type Advertisement struct {
 
 	Images      []AdvertisementImage `json:"images" gorm:"AdvertisementID; constraint:OnDelete:CASCADE"`
 	Complaintes []Complaint          `json:"complaintes" gorm:"foreignKey:AdvertisementID; constraint:OnDelete:CASCADE"`
+
+	FavoriteItem FavoriteItem `json:"favoriteItem"`
 }
 
 type AdvertisementImage struct {
