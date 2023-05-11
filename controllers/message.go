@@ -101,9 +101,9 @@ func DeleteMessageByID(c *gin.Context) {
 	}
 
 	var chat models.Chat
-	err := initializers.DB.Where("id = ?", message.ChatID).Find(&chat)
+	err := initializers.DB.Where("id = ?", message.ChatID).Find(&chat).Error
 	if err != nil {
-		panic(err)
+		c.JSON(404, gin.H{"error": err})
 		return
 	}
 

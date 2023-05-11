@@ -90,7 +90,7 @@ func ListOfUserChats(c *gin.Context) {
 
 	var chats []models.Chat
 
-	if err := initializers.DB.Where("user_id = ?", UserID).First(&chats).Error; err != nil {
+	if err := initializers.DB.Where("user_id = ?", UserID).Find(&chats).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
@@ -112,7 +112,7 @@ func ListOfUserFavoriteItems(c *gin.Context) {
 
 	var favoriteItems []models.FavoriteItem
 
-	if err := initializers.DB.Where("user_id = ?", int(loggedUser["userID"].(float64))).First(&favoriteItems).Error; err != nil {
+	if err := initializers.DB.Where("user_id = ?", int(loggedUser["userID"].(float64))).Find(&favoriteItems).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
@@ -122,7 +122,7 @@ func ListOfUserFavoriteItems(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": favoriteItems})
+	c.JSON(http.StatusOK, favoriteItems)
 }
 
 func ListOfUserAdvertisements(c *gin.Context) {
@@ -139,7 +139,7 @@ func ListOfUserAdvertisements(c *gin.Context) {
 
 	var advertisements []models.Advertisement
 
-	if err := initializers.DB.Where("user_id = ?", int(loggedUser["userID"].(float64))).First(&advertisements).Error; err != nil {
+	if err := initializers.DB.Where("user_id = ?", int(loggedUser["userID"].(float64))).Find(&advertisements).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}

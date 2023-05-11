@@ -146,7 +146,7 @@ func ChatMessages(c *gin.Context) {
 
 	chatID, _ := strconv.Atoi(c.Param("id"))
 
-	if err := initializers.DB.Where("chat_id = ?", chatID).First(&messages).Error; err != nil {
+	if err := initializers.DB.Where("chat_id = ?", chatID).Find(&messages).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
