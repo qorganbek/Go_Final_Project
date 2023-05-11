@@ -12,11 +12,11 @@ import (
 )
 
 func SignUp(c *gin.Context) {
-	var body models.CreateUserInput
+	var body models.SignUpInput
 
 	if c.Bind(&body) != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Failed to read body",
+			"error": "Failed to read body.",
 		})
 		return
 	}
@@ -25,7 +25,7 @@ func SignUp(c *gin.Context) {
 	hash, err := bcrypt.GenerateFromPassword([]byte(body.Password), 10)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Failed to hash password",
+			"error": "Failed to hash password.",
 		})
 		return
 	}
@@ -36,7 +36,7 @@ func SignUp(c *gin.Context) {
 		Password:    string(hash),
 		Lastname:    body.Lastname,
 		Firstname:   body.Firstname,
-		Role:        body.Role,
+		Role:        "User",
 		Gender:      body.Gender,
 	}
 
@@ -44,21 +44,21 @@ func SignUp(c *gin.Context) {
 
 	if result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Failed to create User",
+			"error": "Failed to create User.",
 		})
 		return
 	}
 
 	// Respond
-	c.JSON(http.StatusOK, gin.H{"data": "User created!"})
+	c.JSON(http.StatusOK, gin.H{"message": "User created!"})
 }
 
 func SignIn(c *gin.Context) {
-	var body models.LoginUserInput
+	var body models.SignInInput
 
 	if c.Bind(&body) != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Failed to read body",
+			"error": "Failed to read body.",
 		})
 		return
 	}
@@ -67,7 +67,7 @@ func SignIn(c *gin.Context) {
 	initializers.DB.First(&user, "phone_number = ?", body.PhoneNumber)
 	if user.ID == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Invalid phoneNumber",
+			"error": "Invalid phone number.",
 		})
 		return
 	}
@@ -90,7 +90,7 @@ func SignIn(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Failed to create token",
+			"error": "Failed to create token.",
 		})
 		return
 	}
@@ -101,24 +101,22 @@ func SignIn(c *gin.Context) {
 	return
 }
 
-func Logout(c *gin.Context) {
+func SignOut(c *gin.Context) {
 	c.SetCookie("Authorization", "", -1, "", "", false, true)
-	c.JSON(http.StatusOK, gin.H{"message": "Logged out"})
+	c.JSON(http.StatusOK, gin.H{"message": "Signed out."})
 }
 
-func Validate(c *gin.Context) {
+func ValidateUser(c *gin.Context) {
 	user, err := c.Get("user")
 
 	if !err {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"message": user,
-	})
+	c.JSON(http.StatusOK, gin.H{"data": user})
 }
 
-func GetUserDetailsFromToken(c *gin.Context) gin.H {
+func GetPayloadFromToken(c *gin.Context) gin.H {
 	// retrieve the token from the cookie
 	tokenCookie, err := c.Request.Cookie("Authorization")
 	if err != nil {
@@ -133,7 +131,7 @@ func GetUserDetailsFromToken(c *gin.Context) gin.H {
 	})
 
 	if err != nil {
-		//c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "invalid auth token"})
+		//c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "invalid auth token."})
 		return nil
 	}
 
@@ -148,7 +146,7 @@ func GetUserDetailsFromToken(c *gin.Context) gin.H {
 
 		return response
 	} else {
-		//c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "invalid auth token"})
+		//c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "invalid auth token."})
 		return nil
 	}
 }

@@ -4,9 +4,8 @@ import "gorm.io/gorm"
 
 type Advertisement struct {
 	gorm.Model
-	UserID int `json:"userID"`
-	CarID  int `json:"carID"`
-	//Title string `json:"title" gorm:"default:""`
+	UserID         int     `json:"userID"`
+	CarID          int     `json:"carID"`
 	Year           int     `json:"year"`
 	EngineCapacity float64 `json:"engineCapacity" gorm:"check:engine_capacity > 0"`
 	Millage        int     `json:"millage" gorm:"check:millage > 0"`

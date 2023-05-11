@@ -31,14 +31,14 @@ func CreateCategory(c *gin.Context) {
 	isAuth := final_project.IsAuthorizedOrReadOnly(c)
 
 	if !isAuth {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "User Unauthorized"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "You are unauthorized."})
 		return
 	}
 
 	isAdmin := final_project.IsAdmin(c)
 
 	if !isAdmin {
-		c.JSON(http.StatusForbidden, gin.H{"error": "user not admin"})
+		c.JSON(http.StatusForbidden, gin.H{"error": "You are not Admin."})
 		return
 	}
 
@@ -75,14 +75,14 @@ func UpdateCategoryByID(c *gin.Context) {
 	isAuth := final_project.IsAuthorizedOrReadOnly(c)
 
 	if !isAuth {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "User Unauthorized"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "You are unauthorized."})
 		return
 	}
 
 	isAdmin := final_project.IsAdmin(c)
 
 	if !isAdmin {
-		c.JSON(http.StatusForbidden, gin.H{"error": "user not admin"})
+		c.JSON(http.StatusForbidden, gin.H{"error": "You are not Admin."})
 		return
 	}
 
@@ -100,14 +100,14 @@ func DeleteCategoryByID(c *gin.Context) {
 	isAuth := final_project.IsAuthorizedOrReadOnly(c)
 
 	if !isAuth {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "User Unauthorized"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "You are unauthorized."})
 		return
 	}
 
 	isAdmin := final_project.IsAdmin(c)
 
 	if !isAdmin {
-		c.JSON(http.StatusForbidden, gin.H{"error": "user not admin"})
+		c.JSON(http.StatusForbidden, gin.H{"error": "You are not Admin."})
 		return
 	}
 

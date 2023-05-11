@@ -9,33 +9,6 @@ import (
 	"net/http"
 )
 
-func ListOfUserFavoriteItems(c *gin.Context) {
-	if final_project.IsAuthorizedOrReadOnly(c) == false {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized!"})
-		return
-	}
-
-	loggedUser := middleware.GetUserDetailsFromToken(c)
-	if loggedUser == nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Can't load data from token!"})
-		return
-	}
-
-	var favoriteItems []models.FavoriteItem
-
-	if err := initializers.DB.Where("id = ?", int(loggedUser["userID"].(float64))).First(&favoriteItems).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
-		return
-	}
-
-	if len(favoriteItems) == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Couldn't retrieve data!"})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"data": favoriteItems})
-}
-
 func CreateFavoriteItem(c *gin.Context) {
 	var favoriteItem models.FavoriteItem
 
@@ -49,7 +22,7 @@ func CreateFavoriteItem(c *gin.Context) {
 		return
 	}
 
-	loggedUser := middleware.GetUserDetailsFromToken(c)
+	loggedUser := middleware.GetPayloadFromToken(c)
 	if loggedUser == nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Can't load data from token!"})
 		return

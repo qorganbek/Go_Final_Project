@@ -24,7 +24,7 @@ func ListOfAdvertisementsByPrice(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": advertisements})
 }
 
-func ListOfAdvertisementsByYears(c *gin.Context) {
+func ListOfAdvertisementsByYear(c *gin.Context) {
 	var advertisements []models.Advertisement
 
 	initializers.DB.Find(&advertisements)

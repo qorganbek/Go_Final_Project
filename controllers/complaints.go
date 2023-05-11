@@ -40,7 +40,7 @@ func CreateComplaint(c *gin.Context) {
 		return
 	}
 
-	loggedUser := middleware.GetUserDetailsFromToken(c)
+	loggedUser := middleware.GetPayloadFromToken(c)
 	complaint.UserID = int(loggedUser["userID"].(float64))
 
 	if err := initializers.DB.Create(&complaint).Error; err != nil {

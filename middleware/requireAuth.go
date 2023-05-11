@@ -17,7 +17,7 @@ func RequireAuth(c *gin.Context) {
 	tokenString, err := c.Cookie("Authorization")
 
 	if err != nil || tokenString == "" {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized."})
 		return
 	}
 
@@ -36,10 +36,11 @@ func RequireAuth(c *gin.Context) {
 		}
 
 		var user models.User
-		initializers.DB.First(&user, claims["sub"])
+		initializers.DB.First(&user, claims["userID"])
 
 		if user.ID == 0 {
 			c.AbortWithStatus(http.StatusUnauthorized)
+			return
 		}
 
 		c.Set("user", user)

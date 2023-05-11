@@ -24,17 +24,20 @@ func CarRoutes(routes *gin.Engine) {
 }
 
 func AuthRoutes(routes *gin.Engine) {
-	routes.POST("users/signup", middleware.SignUp)
-	routes.POST("users/login", middleware.SignIn)
-	routes.GET("users/validate", middleware.RequireAuth, middleware.Validate)
-	routes.POST("users/logout", middleware.Logout)
+	routes.POST("users/signUp", middleware.SignUp)
+	routes.POST("users/signIn", middleware.SignIn)
+	routes.GET("users/validate", middleware.RequireAuth, middleware.ValidateUser)
+	routes.POST("users/signOut", middleware.SignOut)
 }
 
 func UserRoutes(routes *gin.Engine) {
-	routes.GET("/users", controllers.ListOfUser)
+	routes.GET("/users", controllers.ListOfUsers)
 	routes.GET("/users/:id", controllers.GetUserByID)
-	routes.PATCH("/users/:id", controllers.UpdateUserByID)
 	routes.DELETE("/users/:id", controllers.DeleteUserByID)
+
+	routes.GET("/myChats", controllers.ListOfUserChats)
+	routes.GET("/myFavorites", controllers.ListOfUserFavoriteItems)
+	routes.GET("/myAdvertisements", controllers.ListOfUserAdvertisements)
 
 	//routes.GET("/users/loggedUserDetail", controllers.GetUserDetailsFromToken)
 }
@@ -50,7 +53,6 @@ func ChatRoutes(routes *gin.Engine) {
 
 func MessageRoutes(routes *gin.Engine) {
 	routes.GET("/messages", controllers.ListOfMessages)
-	routes.GET("/messages/:id", controllers.GetMessageByID)
 	routes.POST("/messages", controllers.CreateMessage)
 	routes.PATCH("/messages/:id", controllers.UpdateMessageByID)
 	routes.DELETE("/messages/:id", controllers.DeleteMessageByID)
@@ -64,7 +66,7 @@ func AdvertisementRoutes(routes *gin.Engine) {
 	routes.DELETE("/advertisements/:id", controllers.DeleteAdvertisementByID)
 
 	routes.GET("advertisements/filterByPrice/:min/:max", filters.ListOfAdvertisementsByPrice)
-	routes.GET("advertisements/filterByYear/:min/:max", filters.ListOfAdvertisementsByYears)
+	routes.GET("advertisements/filterByYear/:min/:max", filters.ListOfAdvertisementsByYear)
 }
 
 func ComplaintRoutes(routes *gin.Engine) {
@@ -74,7 +76,6 @@ func ComplaintRoutes(routes *gin.Engine) {
 }
 
 func FavoriteItemRoutes(routes *gin.Engine) {
-	routes.GET("/favorites", controllers.ListOfUserFavoriteItems)
 	routes.POST("/favorites", controllers.CreateFavoriteItem)
 	routes.DELETE("/favorites/:id", controllers.DeleteFavoriteItemByID)
 }

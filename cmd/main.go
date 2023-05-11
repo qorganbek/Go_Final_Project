@@ -16,15 +16,18 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
 
-	routes.CarRoutes(router)
-	routes.CategoryRoutes(router)
 	routes.AuthRoutes(router)
 	routes.UserRoutes(router)
-	routes.ChatRoutes(router)
+
+	routes.CategoryRoutes(router)
+	routes.CarRoutes(router)
+
 	routes.AdvertisementRoutes(router)
+	routes.FavoriteItemRoutes(router)
+
+	routes.ChatRoutes(router)
 	routes.MessageRoutes(router)
 	routes.ComplaintRoutes(router)
-	routes.FavoriteItemRoutes(router)
 
 	log.Fatal(router.Run(":8000"))
 }

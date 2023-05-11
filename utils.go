@@ -7,7 +7,7 @@ import (
 )
 
 func IsAdmin(c *gin.Context) bool {
-	userRole := middleware.GetUserDetailsFromToken(c)["userRole"]
+	userRole := middleware.GetPayloadFromToken(c)["userRole"]
 	fmt.Println(userRole)
 	if userRole != "Admin" {
 		return false
@@ -16,7 +16,7 @@ func IsAdmin(c *gin.Context) bool {
 }
 
 func IsAuthorizedOrReadOnly(c *gin.Context) bool {
-	loggedUser := middleware.GetUserDetailsFromToken(c)
+	loggedUser := middleware.GetPayloadFromToken(c)
 	if loggedUser == nil {
 		return false
 	}

@@ -16,7 +16,7 @@ func ListOfChats(c *gin.Context) {
 	isAdmin := final_project.IsAdmin(c)
 
 	if !isAdmin {
-		c.JSON(http.StatusForbidden, gin.H{"error": "User not admin"})
+		c.JSON(http.StatusForbidden, gin.H{"error": "You are not Admin."})
 		return
 	}
 
@@ -34,7 +34,7 @@ func CreateChat(c *gin.Context) {
 
 	isAuth := final_project.IsAuthorizedOrReadOnly(c)
 	if !isAuth {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "User unauthorized"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "You are unauthorized."})
 		return
 	}
 
@@ -43,7 +43,7 @@ func CreateChat(c *gin.Context) {
 		return
 	}
 
-	loggedUser := middleware.GetUserDetailsFromToken(c)
+	loggedUser := middleware.GetPayloadFromToken(c)
 	chat.UserID = int(loggedUser["userID"].(float64))
 
 	if err := initializers.DB.Create(&chat).Error; err != nil {
@@ -57,6 +57,20 @@ func CreateChat(c *gin.Context) {
 func GetChatByID(c *gin.Context) {
 	var chat models.Chat
 
+	isAuth := final_project.IsAuthorizedOrReadOnly(c)
+
+	if !isAuth {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "You are unauthorized."})
+		return
+	}
+
+	isAdmin := final_project.IsAdmin(c)
+
+	if !isAdmin {
+		c.JSON(http.StatusForbidden, gin.H{"error": "You are not Admin."})
+		return
+	}
+
 	if err := initializers.DB.Where("id = ?", c.Param("id")).First(&chat).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
@@ -66,6 +80,7 @@ func GetChatByID(c *gin.Context) {
 
 func UpdateChatByID(c *gin.Context) {
 	var chat models.Chat
+
 	if err := initializers.DB.Where("id = ?", c.Param("id")).First(&chat).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
@@ -79,15 +94,15 @@ func UpdateChatByID(c *gin.Context) {
 	isAuth := final_project.IsAuthorizedOrReadOnly(c)
 
 	if !isAuth {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "User unauthorized"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "You are unauthorized."})
 		return
 	}
 
 	isAdmin := final_project.IsAdmin(c)
-	ownerID := int(middleware.GetUserDetailsFromToken(c)["userID"].(float64))
+	ownerID := int(middleware.GetPayloadFromToken(c)["userID"].(float64))
 
 	if !isAdmin && ownerID != chat.UserID {
-		c.JSON(http.StatusForbidden, gin.H{"error": "User not admin or owner"})
+		c.JSON(http.StatusForbidden, gin.H{"error": "You are not Owner or Admin."})
 		return
 	}
 
@@ -105,15 +120,15 @@ func DeleteChatByID(c *gin.Context) {
 	isAuth := final_project.IsAuthorizedOrReadOnly(c)
 
 	if !isAuth {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "User unauthorized"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "You are unauthorized."})
 		return
 	}
 
 	isAdmin := final_project.IsAdmin(c)
-	ownerID := int(middleware.GetUserDetailsFromToken(c)["userID"].(float64))
+	ownerID := int(middleware.GetPayloadFromToken(c)["userID"].(float64))
 
 	if !isAdmin && ownerID != chat.UserID {
-		c.JSON(http.StatusForbidden, gin.H{"error": "User not admin or owner"})
+		c.JSON(http.StatusForbidden, gin.H{"error": "You are nor Admin or Owner"})
 		return
 	}
 
@@ -123,26 +138,18 @@ func DeleteChatByID(c *gin.Context) {
 
 func ChatMessages(c *gin.Context) {
 	if final_project.IsAuthorizedOrReadOnly(c) == false {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized user!"})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized user."})
 		return
 	}
-	var allMessages []models.Message
+
 	var messages []models.Message
 
-	ChatID := c.Param("id")
-	initializers.DB.Find(&allMessages)
+	chatID, _ := strconv.Atoi(c.Param("id"))
 
-	i, err := strconv.Atoi(ChatID)
-
-	if err != nil {
-		panic(err)
+	if err := initializers.DB.Where("chat_id = ?", chatID).First(&messages).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
 	}
 
-	for _, val := range allMessages {
-		if val.ChatID == i {
-			messages = append(messages, val)
-		}
-	}
-
-	c.JSON(http.StatusOK, gin.H{"chat messages": messages})
+	c.JSON(http.StatusOK, gin.H{"Chat messages": messages})
 }
